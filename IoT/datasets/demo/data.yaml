@@ -1,0 +1,6 @@
+path: C:/Users/123/Desktop/train1_fjb+5
+train: train/images
+val: valid/images
+
+nc: 3
+names: ['book', 'cube', 'key']
