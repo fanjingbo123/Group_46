@@ -1,5 +1,7 @@
-# Group_46
+# Group_46_Design_and_Build
 ## Table of contents
+- [Group\_46\_Design\_and\_Build](#group_46_design_and_build)
+  - [Table of contents](#table-of-contents)
   - [Telecom](#telecom)
     - [Introduction](#introduction)
     - [Features](#features)
