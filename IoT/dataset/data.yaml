@@ -1,6 +1,7 @@
-path: C:/Users/123/Desktop/train1_fjb+5
+path: IoT/dataset
 train: train/images
 val: valid/images
+test: test/images
 
 nc: 3
 names: ['book', 'cube', 'key']
