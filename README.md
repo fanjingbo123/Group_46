@@ -1,7 +1,5 @@
 # Group_46
 ## Table of contents
-- [Group\_46](#group_46)
-  - [Table of contents](#table-of-contents)
   - [Telecom](#telecom)
     - [Introduction](#introduction)
     - [Features](#features)
