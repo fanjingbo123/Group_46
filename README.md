@@ -16,6 +16,15 @@
     - [Prerequisites](#prerequisites-1)
   - [Usage](#usage)
 - [E-commerce](#e-commerce)
+  - [Project Overview](#project-overview)
+  - [Instructions for Use](#instructions-for-use)
+    - [Environment](#environment)
+    - [Setup](#setup)
+    - [Additional Configuration](#additional-configuration)
+  - [File Structure](#file-structure)
+    - [Java Project](#java-project)
+    - [webapp](#webapp)
+  - [Code Explanation](#code-explanation)
 
 
 ## Telecom
@@ -166,25 +175,100 @@ Before you begin, ensure you have met the following requirements:
 
 
 ## E-commerce
-**Project overview**
-This project is a web page, used to achieve user login, registration functions and display robot exploration record information.
 
-**Instructions for use**
-The running environment of this project is windows10.
-Jdk17.0.8.1,
-The server environment is Tomcat v8.5.
-The compilation environment is eclipse-jee-2023-06
-The database version is mysql-8.0.33-winx64
-The database operation management tool is MySQL Workbench 8.0 CE
-Before you start running, make sure that the database table javawebdb has been imported into the database, that the code for connecting to the database is changed to the user name and password of the machine (mentioned below), that the mysql service is running, that tomcat is started, and that run as testWeb1 is performed.
+### Project Overview
 
-**File structure**
-The project structure is divided into java project and webapp file.
-In the Java project, the dao folder contains the implementation files related to the data access object, the db folder contains the files related to the database connection to implement the database connection, the vo folder contains the files related to the value object, RecordInfo and UserInfo represent the discovery record information and the user information respectively.
-It should be noted that RecordDao.java and DBConnect.java contain parts of the database connection and need to correct the user name and password to the local correct user name and password.
-jsp file in Webapp is used to display the web page, error.jsp is the page that prompts the user name or password input error, register.jsp is the user registration page,userinterface.jsp is the userinterface welcome.jsp is the userinterface after login
-lib contains the jar packages required for the project
-It should be noted that, server.xml adds <Context crossContext="true" docBase="C:\Users\12975\Pictures\" path="/upload" reloadable="true"></Context> is used to read pictures in the local folder, which needs to be changed to the correct folder on the running machine, consistent with the folder where the Internet of Things students store pictures.
+This project is a comprehensive web application designed to implement user authentication functionalities, including user login and registration, as well as the display of robot exploration record information.
+
+### Instructions for Use
+
+#### Environment
+
+- **Operating System**: Windows 10
+- **JDK**: 17.0.8.1
+- **Server**: Tomcat v8.5
+- **IDE**: Eclipse JEE 2023-06
+- **Database**: MySQL 8.0.33 (winx64)
+- **DB Management Tool**: MySQL Workbench 8.0 CE
+
+#### Setup
+
+Before running the application, please follow the steps below:
+
+1. Ensure the `javawebdb` database table has been imported into your MySQL instance.
+2. Update the database connection code within the project to use your machine's MySQL username and password. Specifically, changes need to be made in `RecordDao.java` and `DBConnect.java`.
+3. Verify that the MySQL service is running.
+4. Start the Tomcat server.
+5. In Eclipse, right-click on the `testWeb1` project and select "Run As" to run the application.
+
+#### Additional Configuration
+
+- In the `server.xml` file, update the `<Context>` element's `docBase` attribute to point to the correct folder on your machine. This path should be consistent with the folder used by IoT students for storing pictures.
+
+   ```xml
+   <Context crossContext="true" docBase="C:\Users\12975\Pictures\" path="/upload" reloadable="true"></Context>
+   ```
+
+### File Structure
+
+The project is organized into a Java project and a `webapp` directory, each with specific roles and files.
+
+#### Java Project
+
+- **dao**: This folder contains the implementation files for the Data Access Objects (DAOs), crucial for interacting with the database.
+- **db**: This directory includes the files necessary for establishing and managing database connectivity.
+- **vo**: Here, you'll find the Value Objects (VOs), such as `RecordInfo` and `UserInfo`, which represent the discovery record information and user information, respectively.
+
+**Note**: The files `RecordDao.java` and `DBConnect.java` contain crucial database connection information. It's imperative to update the username and password in these files to match your local MySQL credentials.
+
+#### webapp
+
+- **jsp**: This folder houses the JSP files responsible for rendering the user interface. The key files include:
+  - `error.jsp`: Engages when there's an input error, informing the user of the incorrect input.
+  - `register.jsp`: Serves as the user registration interface.
+  - `userinterface.jsp`: Acts as the main user interface.
+  - `welcome.jsp`: Functions as the landing page after successful user login.
+- **lib**: Contains all the necessary JAR packages required for the project's operation.
+
+### Code Explanation
+
+This section delves into the specifics of the key components within the E-commerce subsystem, providing a detailed explanation of the code and its functionality.
+
+`UserDAO.java` & `UserDAOImpl.java`
+
+These interfaces and classes are part of the Data Access Object (DAO) layer, crucial for interacting with the database to perform operations related to user data.
+
+- **UserDAO.java**: Defines the contract for user operations. The `queryByUserInfo` method is declared here, specifying an operation to check the existence of a user based on provided user information.
+- **UserDAOImpl.java**: Implements the operations declared in the UserDAO. The `queryByUserInfo` method is defined here, which interacts with the database to check if user credentials are valid.
+
+`DBConnect.java`
+
+This file is responsible for managing the database connection.
+
+- **DBConnect.java**: It initializes the connection to the database and provides a method to retrieve this connection. This is where you configure the database URL, user, and password.
+
+`UserInfo.java` & `RecordInfo.java`
+
+These files define the structure of data objects used within the application.
+
+- **UserInfo.java**: Represents a user entity with fields like username and password, and methods to access them (getters and setters).
+- **RecordInfo.java**: Represents a record entity within the system, containing various attributes of a record and a list of image paths related to the record.
+
+`UserLoginServlet.java` & `resgisterServlet.java`
+
+These servlets handle HTTP requests and responses for user login and registration.
+
+- **UserLoginServlet.java**: Manages the user login process. It takes the username and password from the request, checks them against the database, and then redirects to either a success or error page.
+- **resgisterServlet.java**: Manages the user registration process. It retrieves user details from the request, validates them, and if valid, adds the new user's information to the database.
+
+`RecordDao.java`
+
+This file is part of the DAO layer and interacts with the database to manage record information.
+
+- **RecordDao.java**: Contains methods for saving and retrieving record data. The `saveRecord` method adds a new record to the database, while the `getAllRecords` method retrieves all saved records.
+
+
 
 Contact way:
 zhangjiaxiang36@bupt.edu.cn
+
