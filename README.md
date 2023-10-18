@@ -16,7 +16,6 @@
     - [Prerequisites](#prerequisites-1)
   - [Usage](#usage)
 - [E-commerce](#e-commerce)
-  - [Project Overview](#project-overview)
   - [Instructions for Use](#instructions-for-use)
     - [Environment](#environment)
     - [Setup](#setup)
@@ -176,10 +175,6 @@ Before you begin, ensure you have met the following requirements:
 
 ## E-commerce
 
-### Project Overview
-
-This project is a comprehensive web application designed to implement user authentication functionalities, including user login and registration, as well as the display of robot exploration record information.
-
 ### Instructions for Use
 
 #### Environment
@@ -266,9 +261,3 @@ These servlets handle HTTP requests and responses for user login and registratio
 This file is part of the DAO layer and interacts with the database to manage record information.
 
 - **RecordDao.java**: Contains methods for saving and retrieving record data. The `saveRecord` method adds a new record to the database, while the `getAllRecords` method retrieves all saved records.
-
-
-
-Contact way:
-zhangjiaxiang36@bupt.edu.cn
-
